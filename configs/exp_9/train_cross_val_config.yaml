@@ -1,0 +1,70 @@
+# Testing a pipeline with video on folds on a small dataset
+
+# experiment number
+exp_number: 9
+
+# dataset folder
+dataset_folder: "./datasets/small_main_dataset"
+
+# folder with models
+models_folder_occlusion: "./models/exp_3"
+models_folder_dominance_rca: "./models/exp_7"
+models_folder_dominance_lca: "./models/exp_8"
+
+# file where the study numbers for the samples in folds are stored
+folds_studies_path: "./datasets/small_folds_and_holdout_dict.pkl"
+
+# path to the logs folder
+results_path: "./logs"
+
+# which feature folders in the dataset to use, if more than one, write as "normal, occlusion"
+features: "normal, occlusion"
+
+# which model to use
+model_type_occlusion: "convnext"
+model_type_dominance: "video_resnet"
+
+# device
+device: "cuda:0"
+
+# general seed
+seed: 42
+
+dataset_params:
+  # seed for mixing dataset items
+  seed: 42
+
+# slice selection parameter settings
+slice_selection_settings_rca:
+  method_num: 1
+  model_slice_selection_path: "./models/RCA_frames_quality/heart_model_1_data_2_randaug_h_v_el_wd0.05_0.984_0.921_0.215.pt"
+  conf_thr_slices_not_occlusion: 0.7
+  conf_thr_slices_occlusion: 0
+  window: 3
+  batch_size: 100
+  frames_selection_method: "model" # model, ssim, first_frames, None
+  n_first_frames_to_skip: 20
+
+slice_selection_settings_lca:
+  method_num: 1
+  model_slice_selection_path: "./models/LCA_frames_quality/frames_selection_model_0.83_0.788_1.567.pt"
+  conf_thr_slices_not_occlusion: 0.7
+  conf_thr_slices_occlusion: 0
+  window: 3
+  batch_size: 100
+  frames_selection_method: "model" # model, ssim, first_frames, None
+  n_first_frames_to_skip: 20
+
+test_slice_selection_settings_rca:
+  frames_selection_method: "model" # model, ssim
+  method_num: 1
+  model_slice_selection_path: "./models/RCA_frames_quality/heart_model_1_data_2_randaug_h_v_el_wd0.05_0.984_0.921_0.215.pt"
+  conf_thr_slices: 0.55
+  window: 3
+
+test_slice_selection_settings_lca:
+  frames_selection_method: "model" # model, ssim
+  method_num: 1
+  model_slice_selection_path: "./models/LCA_frames_quality/frames_selection_model_0.83_0.788_1.567.pt"
+  conf_thr_slices: 0.55
+  window: 3

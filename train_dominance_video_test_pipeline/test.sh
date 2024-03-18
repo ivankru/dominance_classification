@@ -1,0 +1,4 @@
+export CUDA_VISIBLE_DEVICES=0
+python train_dominance_video_test_pipeline/test_full_pipeline_on_folds.py --exp-number 9
+python train_dominance_video_test_pipeline/test_full_pipeline_on_hold_out.py --exp-number 10
+python train_dominance_video_test_pipeline/test_full_pipeline_on_domain_shift_or_special_feature.py --exp-number 11

@@ -1,0 +1,3 @@
+python train_occlusion_test_pipeline/test_full_pipeline_on_folds.py --exp-number 4
+python train_occlusion_test_pipeline/test_full_pipeline_on_hold_out.py --exp-number 5
+python train_occlusion_test_pipeline/test_full_pipeline_on_domain_shift_or_special_feature.py --exp-number 6
